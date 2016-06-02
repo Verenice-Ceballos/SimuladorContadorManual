@@ -10,7 +10,7 @@ package paquetito;
  * @author Verenice
  */
 public class SimuladorContadorManual extends javax.swing.JFrame {
-
+public static int Cont;
     /**
      * Creates new form SimuladorContadorManual
      */
@@ -28,7 +28,7 @@ public class SimuladorContadorManual extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        campoConteo = new javax.swing.JTextField();
         bottonContar = new javax.swing.JButton();
         bottonReset = new javax.swing.JButton();
         bottonCerrar = new javax.swing.JButton();
@@ -38,7 +38,15 @@ public class SimuladorContadorManual extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        campoConteo.setEditable(false);
+        campoConteo.setText("0");
+
         bottonContar.setText("Contar");
+        bottonContar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bottonContarActionPerformed(evt);
+            }
+        });
 
         bottonReset.setText("Reiniciar");
         bottonReset.addActionListener(new java.awt.event.ActionListener() {
@@ -58,14 +66,14 @@ public class SimuladorContadorManual extends javax.swing.JFrame {
                         .addComponent(bottonContar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bottonReset))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoConteo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bottonContar)
@@ -74,6 +82,11 @@ public class SimuladorContadorManual extends javax.swing.JFrame {
         );
 
         bottonCerrar.setText("Cerrar");
+        bottonCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bottonCerrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,7 +114,20 @@ public class SimuladorContadorManual extends javax.swing.JFrame {
 
     private void bottonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonResetActionPerformed
         // TODO add your handling code here:
+        Cont=0;
+        campoConteo.setText(String.valueOf(Cont));
     }//GEN-LAST:event_bottonResetActionPerformed
+
+    private void bottonContarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonContarActionPerformed
+        // TODO add your handling code here:
+        Cont++;
+        campoConteo.setText(String.valueOf(Cont));
+    }//GEN-LAST:event_bottonContarActionPerformed
+
+    private void bottonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonCerrarActionPerformed
+        // TODO add your handling code here:
+     System.exit(0);
+    }//GEN-LAST:event_bottonCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,7 +170,7 @@ public class SimuladorContadorManual extends javax.swing.JFrame {
     private javax.swing.JButton bottonCerrar;
     private javax.swing.JButton bottonContar;
     private javax.swing.JButton bottonReset;
+    private javax.swing.JTextField campoConteo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
